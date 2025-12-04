@@ -1,0 +1,157 @@
+@import "syntax-variables";
+@import "octicon-mixins";
+
+atom-text-editor {
+  .gutter .line-number,
+  .line {
+    &.diff-view-line {
+      &.diff-view-added {
+        background-color: fade(@syntax-color-added, 10%);
+      }
+
+      &.diff-view-removed {
+        background-color: fade(@syntax-color-removed, 10%);
+      }
+
+      &.diff-view-selected {
+        background-color: fade(@syntax-color-modified, 10%);
+      }
+    }
+  }
+
+  .diff-view-word-added .region {
+    background-color: fade(@syntax-color-added, 30%);
+  }
+
+  .diff-view-word-removed .region {
+    background-color: fade(@syntax-color-removed, 30%);
+  }
+
+  .diff-view-offset {
+    background-color: @syntax-gutter-background-color-selected;
+  }
+}
+
+@spinner-duration: 1.2s;
+@spinner-color: mix( hsv( 220, 100%, 66%), hsl( 220, 100%, 70%), luma( hsl(220, 50%, 50%) ) );
+.diff-view-loading-icon {
+  position: relative;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+  background: radial-gradient(@spinner-color .1em, transparent .11em);
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: 10; // prevent sibling elements from getting their own layers
+    top: 0;
+    left: 0;
+    border-radius: 1em;
+    width: inherit;
+    height: inherit;
+    border-radius: 1em;
+    border: 2px solid;
+    -webkit-animation: spinner-animation @spinner-duration infinite;
+    -webkit-animation-fill-mode: backwards;
+  }
+  &::before {
+    border-color: @spinner-color transparent transparent transparent;
+  }
+  &::after {
+    border-color: transparent lighten(@spinner-color, 15%) transparent transparent;
+    -webkit-animation-delay: @spinner-duration/2;
+  }
+}
+
+@-webkit-keyframes spinner-animation {
+    0% { transform: rotateZ(  0deg); -webkit-animation-timing-function: cubic-bezier(0, 0, .8, .2); }
+   50% { transform: rotateZ(180deg); -webkit-animation-timing-function: cubic-bezier(.2, .8, 1, 1); }
+  100% { transform: rotateZ(360deg); }
+}
+
+/* bottom panel UI */
+.diff-view-ui {
+  padding: 2px 10px 2px 10px;
+  display: flex;
+  justify-content: space-between;
+
+  /* hard code width so mid column is actually in middle */
+  .left {
+    width: 300px;
+  }
+  .mid {
+    text-align: center;
+  }
+  /* hard code width so mid column is actually in middle */
+  .right {
+    display: flex;
+    justify-content: flex-end;
+    width: 300px;
+  }
+
+  .num-diff,
+  .selection-count,
+  .selection-divider,
+  .num-diff-text {
+    display: inline-block;
+    margin-left: 0.5em;
+    font-size: 1rem;
+  }
+
+  .selection-count,
+  .num-diff {
+    vertical-align: middle;
+  }
+
+  /* button icons */
+  .prev-diff { .octicon(chevron-up); }
+  .next-diff { .octicon(chevron-down); }
+  .copy-to-left { .octicon(clippy); }
+  .copy-to-right {
+    .octicon(clippy);
+    &:before { transform: scaleX(-1); }
+  }
+  .ignore-whitespace { .octicon(eye); }
+  .auto-diff { .octicon(sync); }
+  .soft-wrap { .octicon(unfold); }
+  .equalize-widths { .octicon(mirror); }
+
+  /* button spacing - consistent for all buttons */
+  .btn {
+    margin-right: 0.5rem;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  /* toggle button selected state */
+  .ignore-whitespace,
+  .auto-diff,
+  .soft-wrap {
+    &.selected {
+      background-color: @button-background-color-selected;
+      color: @text-color-selected;
+    }
+  }
+}
+
+/* scroll-map layer styles */
+.scroll-map .scroll-item.diff-view-layer {
+  height: 3px;
+  z-index: 10;
+
+  &.added {
+    background-color: @syntax-color-added;
+  }
+  &.removed {
+    background-color: @syntax-color-removed;
+  }
+}
+
+/* Move dock toggle button above diff-view footer */
+body.diff-view-visible .atom-dock-toggle-button.bottom {
+  transform: translateY(-30px);
+}

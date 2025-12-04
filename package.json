@@ -1,0 +1,40 @@
+{
+  "name": "diff-view",
+  "description": "A split pane diff tool.",
+  "keywords": [
+    "diff",
+    "git",
+    "split",
+    "compare",
+    "panes",
+    "files",
+    "lines",
+    "code",
+    "difference",
+    "visual"
+  ],
+  "license": "MIT",
+  "version": "0.0.0",
+  "repository": "https://github.com/asiloisad/pulsar-diff-view",
+  "engines": {
+    "atom": ">=1.100.0 <2.0.0"
+  },
+  "main": "./lib/diff-view",
+  "dependencies": {
+    "diff": "^8.0.0"
+  },
+  "providedServices": {
+    "diff-view": {
+      "versions": {
+        "1.0.0": "provideDiffView"
+      }
+    }
+  },
+  "consumedServices": {
+    "scroll-map": {
+      "versions": {
+        "^0.0.1": "consumeScrollMapService"
+      }
+    }
+  }
+}

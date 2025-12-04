@@ -1,0 +1,13 @@
+'context-menu':
+  '.tree-view .file.selected': [
+    {
+      label: 'Diff with Active File'
+      command: 'diff-view:enable'
+    }
+  ]
+  '.tab.texteditor': [
+    {
+      label: 'Diff with Active File'
+      command: 'diff-view:enable'
+    }
+  ]
