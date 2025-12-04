@@ -14,7 +14,7 @@
     "visual"
   ],
   "license": "MIT",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "repository": "https://github.com/asiloisad/pulsar-diff-view",
   "engines": {
     "atom": ">=1.100.0 <2.0.0"
@@ -85,7 +85,11 @@
       "description": "Syncs the scrolling of the editors.",
       "type": "string",
       "default": "Vertical + Horizontal",
-      "enum": ["Vertical + Horizontal", "Vertical", "None"],
+      "enum": [
+        "Vertical + Horizontal",
+        "Vertical",
+        "None"
+      ],
       "order": 7
     },
     "addedColorSide": {
@@ -93,7 +97,10 @@
       "description": "The side that the latest version of the file is on. The added color will be applied to this editor and the removed color will be opposite.",
       "type": "string",
       "default": "left",
-      "enum": ["left", "right"],
+      "enum": [
+        "left",
+        "right"
+      ],
       "order": 8
     },
     "overrideThemeColors": {
