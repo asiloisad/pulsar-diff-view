@@ -118,6 +118,7 @@ atom-text-editor {
   .auto-diff { .octicon(sync); }
   .soft-wrap { .octicon(unfold); }
   .equalize-widths { .octicon(mirror); }
+  .center-line { .octicon(horizontal-rule); }
 
   /* button spacing - consistent for all buttons */
   .btn {
@@ -130,7 +131,8 @@ atom-text-editor {
   /* toggle button selected state */
   .ignore-whitespace,
   .auto-diff,
-  .soft-wrap {
+  .soft-wrap,
+  .center-line {
     &.selected {
       background-color: @button-background-color-selected;
       color: @text-color-selected;
@@ -149,9 +151,31 @@ atom-text-editor {
   &.removed {
     background-color: @syntax-color-removed;
   }
+  &.offset {
+    background-color: @syntax-gutter-background-color-selected;
+  }
 }
 
 /* Move dock toggle button above diff-view footer */
 body.diff-view-visible .atom-dock-toggle-button.bottom {
   transform: translateY(-30px);
+}
+
+/* Center line indicator for scroll sync alignment */
+atom-text-editor.diff-view::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background-color: @syntax-color-modified;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 100;
+  transition: opacity 0.2s;
+}
+
+atom-text-editor.diff-view.show-center-line::after {
+  opacity: 0.5;
 }
