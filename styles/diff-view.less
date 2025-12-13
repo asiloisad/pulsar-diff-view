@@ -6,41 +6,45 @@ atom-text-editor {
   .line {
     &.diff-view-line {
       &.diff-view-added {
-        background-color: fade(@syntax-color-added, 10%);
+        background-color: fade(@syntax-color-added, 20%);
       }
 
       &.diff-view-removed {
-        background-color: fade(@syntax-color-removed, 10%);
+        background-color: fade(@syntax-color-removed, 20%);
       }
 
       &.diff-view-selected {
-        background-color: fade(@syntax-color-modified, 10%);
+        background-color: fade(@syntax-color-modified, 20%);
       }
     }
   }
 
   .diff-view-word-added .region {
-    background-color: fade(@syntax-color-added, 30%);
+    background-color: fade(@syntax-color-added, 20%);
   }
 
   .diff-view-word-removed .region {
-    background-color: fade(@syntax-color-removed, 30%);
+    background-color: fade(@syntax-color-removed, 20%);
   }
 
   .diff-view-offset {
-    background-color: @syntax-gutter-background-color-selected;
+    background-color: fade(@syntax-gutter-background-color-selected, 50%);
   }
 }
 
 @spinner-duration: 1.2s;
-@spinner-color: mix( hsv( 220, 100%, 66%), hsl( 220, 100%, 70%), luma( hsl(220, 50%, 50%) ) );
+@spinner-color: mix(
+  hsv(220, 100%, 66%),
+  hsl(220, 100%, 70%),
+  luma(hsl(220, 50%, 50%))
+);
 .diff-view-loading-icon {
   position: relative;
   display: inline-block;
   width: 1em;
   height: 1em;
   vertical-align: middle;
-  background: radial-gradient(@spinner-color .1em, transparent .11em);
+  background: radial-gradient(@spinner-color 0.1em, transparent 0.11em);
 
   &::before,
   &::after {
@@ -61,15 +65,24 @@ atom-text-editor {
     border-color: @spinner-color transparent transparent transparent;
   }
   &::after {
-    border-color: transparent lighten(@spinner-color, 15%) transparent transparent;
-    -webkit-animation-delay: @spinner-duration/2;
+    border-color: transparent lighten(@spinner-color, 15%) transparent
+      transparent;
+    -webkit-animation-delay: @spinner-duration / 2;
   }
 }
 
 @-webkit-keyframes spinner-animation {
-    0% { transform: rotateZ(  0deg); -webkit-animation-timing-function: cubic-bezier(0, 0, .8, .2); }
-   50% { transform: rotateZ(180deg); -webkit-animation-timing-function: cubic-bezier(.2, .8, 1, 1); }
-  100% { transform: rotateZ(360deg); }
+  0% {
+    transform: rotateZ(0deg);
+    -webkit-animation-timing-function: cubic-bezier(0, 0, 0.8, 0.2);
+  }
+  50% {
+    transform: rotateZ(180deg);
+    -webkit-animation-timing-function: cubic-bezier(0.2, 0.8, 1, 1);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
 }
 
 /* bottom panel UI */
@@ -107,19 +120,39 @@ atom-text-editor {
   }
 
   /* button icons */
-  .prev-diff { .octicon(chevron-up); }
-  .next-diff { .octicon(chevron-down); }
-  .copy-to-left { .octicon(clippy); }
+  .prev-diff {
+    .octicon(chevron-up);
+  }
+  .next-diff {
+    .octicon(chevron-down);
+  }
+  .copy-to-left {
+    .octicon(clippy);
+  }
   .copy-to-right {
     .octicon(clippy);
-    &:before { transform: scaleX(-1); }
+    &:before {
+      transform: scaleX(-1);
+    }
   }
-  .ignore-whitespace { .octicon(eye); }
-  .auto-diff { .octicon(sync); }
-  .soft-wrap { .octicon(unfold); }
-  .equalize-widths { .octicon(mirror); }
-  .center-line { .octicon(horizontal-rule); }
-  .close-diff { .octicon(x); }
+  .ignore-whitespace {
+    .octicon(eye);
+  }
+  .auto-diff {
+    .octicon(sync);
+  }
+  .soft-wrap {
+    .octicon(unfold);
+  }
+  .equalize-widths {
+    .octicon(mirror);
+  }
+  .center-line {
+    .octicon(horizontal-rule);
+  }
+  .close-diff {
+    .octicon(x);
+  }
 
   /* button spacing - consistent for all buttons */
   .btn {
@@ -138,22 +171,6 @@ atom-text-editor {
       background-color: @button-background-color-selected;
       color: @text-color-selected;
     }
-  }
-}
-
-/* scroll-map layer styles */
-.scroll-map .scroll-item.diff-view-layer {
-  height: 3px;
-  z-index: 10;
-
-  &.added {
-    background-color: @syntax-color-added;
-  }
-  &.removed {
-    background-color: @syntax-color-removed;
-  }
-  &.offset {
-    background-color: @syntax-gutter-background-color-selected;
   }
 }
 

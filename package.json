@@ -26,14 +26,8 @@
   "providedServices": {
     "diff-view": {
       "versions": {
+        "0.0.1": "provideDiffService",
         "1.0.0": "provideDiffView"
-      }
-    }
-  },
-  "consumedServices": {
-    "scroll-map": {
-      "versions": {
-        "^1.0.0": "consumeScrollMap"
       }
     }
   },
@@ -123,21 +117,6 @@
       "type": "color",
       "default": "red",
       "order": 11
-    },
-    "scrollMapState": {
-      "title": "Scroll Map",
-      "description": "Display diff markers on scroll bar.",
-      "type": "boolean",
-      "default": true,
-      "order": 12
-    },
-    "scrollMapThreshold": {
-      "title": "Scroll Map Threshold",
-      "description": "Maximum number of markers to display. The limit doesn't apply if zero.",
-      "type": "integer",
-      "minimum": 0,
-      "default": 0,
-      "order": 13
     }
   }
 }
