@@ -10,7 +10,7 @@ A split pane diff tool for Pulsar. Diffs text between two split panes, with supp
 - **Dock toggle button fix** - The dock toggle button no longer overlaps the diff footer bar.
 - **Tree-view context menu** - Right-click on a file in tree-view to "Diff with Active File".
 - **Tab context menu** - Right-click on a tab to "Diff with Active File".
-- **scroll-map integration** - Integrates with the scroll-map package to show diff markers in the scrollbar.
+- **scrollmap integration** - Integrates with the scrollmap package to show diff markers in the scrollbar.
 - **Converted to JavaScript** - All CoffeeScript files have been converted to modern JavaScript.
 - **Pulsar fixed & deps updated** - Package is fixed to work in newest Pulsar and all dependencies are updated to latest versions.
 
