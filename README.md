@@ -1,56 +1,63 @@
 # diff-view
 
-A split pane diff tool for Pulsar. Diffs text between two split panes, with support for soft-wrap, scroll synchronization, and git changes.
+Compare files side-by-side with synchronized scrolling. A split pane diff tool with soft-wrap support, git integration, and context menus.
 
-- **Full soft-wrap support** - Diff now works correctly with soft-wrap enabled. Line offsets and scroll synchronization properly handle wrapped lines.
-- **Buffer-based scroll sync** - Scroll synchronization uses buffer line positions instead of screen positions, ensuring proper alignment even when editors have different soft-wrap settings or window widths.
-- **Soft-wrap toggle button** - New footer button to toggle soft-wrap on/off during diff.
-- **Equalize widths button** - New footer button to equalize pane widths for easier comparison.
-- **Tooltips for all buttons** - All footer buttons now show tooltips on hover.
-- **Dock toggle button fix** - The dock toggle button no longer overlaps the diff footer bar.
-- **Tree-view context menu** - Right-click on a file in tree-view to "Diff with Active File".
-- **Tab context menu** - Right-click on a tab to "Diff with Active File".
-- **scrollmap integration** - Integrates with the scrollmap package to show diff markers in the scrollbar.
-- **Converted to JavaScript** - All CoffeeScript files have been converted to modern JavaScript.
-- **Pulsar fixed & deps updated** - Package is fixed to work in newest Pulsar and all dependencies are updated to latest versions.
+Fork of [split-diff](https://github.com/mupchrch/split-diff).
+
+## Features
+
+- **Soft-wrap support**: Diff works correctly with soft-wrap enabled, including proper line offsets and scroll synchronization.
+- **Buffer-based scroll sync**: Uses buffer line positions for proper alignment across different soft-wrap settings.
+- **Quick toggle buttons**: Footer buttons for soft-wrap toggle and equalizing pane widths.
+- **Context menus**: Right-click on tree-view files or tabs to "Diff with Active File".
+- **Scrollmap**: Shows diff markers in the scrollbar via [scrollmap](https://github.com/asiloisad/pulsar-scrollmap).
+- **Modern codebase**: Converted to JavaScript with updated dependencies.
 
 ## Installation
 
 To install `diff-view` search for [diff-view](https://web.pulsar-edit.dev/packages/diff-view) in the Install pane of the Pulsar settings or run `ppm install diff-view`. Alternatively, you can run `ppm install asiloisad/pulsar-diff-view` to install a package directly from the GitHub repository.
 
-### Service API
+## Service
 
-Packages can consume the diff-view service to programmatically control diffs.
+The package provides a `diff-view` service for other packages.
 
-```js
-// In your package.json:
-"consumedServices": {
-  "diff-view": {
-    "versions": {
-      "1.0.0": "consumeDiffView"
+In your `package.json`:
+
+```json
+{
+  "consumedServices": {
+    "diff-view": {
+      "versions": {
+        "1.0.0": "consumeDiffView"
+      }
     }
   }
 }
+```
 
-// In your package:
-consumeDiffView(diffViewService) {
-  // Get marker layers for the current diff
-  diffViewService.getMarkerLayers().then((layers) => {
-    // layers.editor1MarkerLayer, layers.editor2MarkerLayer
-  });
+In your main module:
 
-  // Start a diff between two editors
-  diffViewService.diffEditors(editor1, editor2, {
-    ignoreWhitespace: true,
-    autoDiff: false
-  });
+```javascript
+module.exports = {
+  consumeDiffView(diffViewService) {
+    // Get marker layers for the current diff
+    diffViewService.getMarkerLayers().then((layers) => {
+      // layers.editor1MarkerLayer, layers.editor2MarkerLayer
+    });
 
-  // Disable the current diff
-  diffViewService.disable();
+    // Start a diff between two editors
+    diffViewService.diffEditors(editor1, editor2, {
+      ignoreWhitespace: true,
+      autoDiff: false
+    });
+
+    // Disable the current diff
+    diffViewService.disable();
+  }
 }
 ```
 
-#### Service Methods
+### Methods
 
 ```js
 /**
@@ -73,10 +80,6 @@ diffEditors(editor1, editor2, options);
 disable();
 ```
 
-# Contributing
+## Contributing
 
-Got ideas to make this package better, found a bug, or want to help add new features? Just drop your thoughts on GitHub — any feedback’s welcome!
-
-# Credits
-
-Fork of [split-diff](https://github.com/mupchrch/split-diff).
+Got ideas to make this package better, found a bug, or want to help add new features? Just drop your thoughts on GitHub — any feedback's welcome!
