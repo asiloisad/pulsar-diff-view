@@ -1,5 +1,5 @@
 'context-menu':
-  '.tree-view .file.selected': [
+  '.tree-view-root:not(.multi-select) .file.selected': [
     {
       label: 'Diff with Active File'
       command: 'diff-view:enable'
