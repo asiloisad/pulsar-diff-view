@@ -2,6 +2,8 @@
 
 Compare files side-by-side with synchronized scrolling. A split pane diff tool with soft-wrap support, git integration, and context menus.
 
+![view](https://github.com/asiloisad/pulsar-diff-view/blob/master/assets/view.png?raw=true)
+
 Fork of [split-diff](https://github.com/mupchrch/split-diff).
 
 ## Features
