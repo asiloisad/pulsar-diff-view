@@ -13,8 +13,8 @@
       {
         label: 'Diff View'
         submenu: [
-          { label: 'Toggle',               command: 'diff-view:toggle' }
-          { label: 'Diff with Git HEAD',   command: 'diff-view:git-head' }
+          { label: 'Toggle', command: 'diff-view:toggle' }
+          { label: 'Diff with Git HEAD', command: 'diff-view:git-head' }
           { label: 'Diff with Git Commit', command: 'diff-view:git-commit' }
         ]
       }
