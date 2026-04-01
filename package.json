@@ -1,6 +1,6 @@
 {
   "name": "diff-view",
-  "description": "A split pane diff tool.",
+  "description": "A split pane diff tool",
   "keywords": [
     "diff",
     "git",
