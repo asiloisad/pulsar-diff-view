@@ -180,20 +180,17 @@ body.diff-view-visible .atom-dock-toggle-button.bottom {
 }
 
 /* Center line indicator for scroll sync alignment */
-atom-text-editor.diff-view::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  height: 1px;
+.diff-view-center-line {
+  position: fixed;
+  height: 3px;
   background-color: @syntax-color-modified;
-  opacity: 0;
-  pointer-events: none;
-  z-index: 100;
-  transition: opacity 0.2s;
-}
-
-atom-text-editor.diff-view.show-center-line::after {
   opacity: 0.5;
+  cursor: ns-resize;
+  z-index: 1000;
+  pointer-events: all;
+  transition: opacity 0.1s, height 0.1s;
+  &:hover {
+    opacity: 0.8;
+    height: 5px;
+  }
 }
