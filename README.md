@@ -12,8 +12,8 @@ Fork of [split-diff](https://github.com/mupchrch/split-diff).
 - **Buffer-based scroll sync**: Uses buffer line positions for proper alignment across different soft-wrap settings.
 - **Quick toggle buttons**: Footer buttons for soft-wrap toggle and equalizing pane widths.
 - **Context menus**: Right-click on tree-view files or tabs to "Diff with Active File".
-- **Scrollbar markers**: Shows diff markers in the scrollbar, via [scrollmap](https://web.pulsar-edit.dev/packages/scrollmap).
-- **Scroll compatibility**: View zone alignment correctly resyncs after soft-wrap recalculation on pane resize, via [scroll-keeper](https://web.pulsar-edit.dev/packages/scroll-keeper).
+- **Scrollbar markers**: Shows diff markers in the scrollbar, via [scrollmap](https://github.com/asiloisad/pulsar-scrollmap).
+- **Scroll compatibility**: View zone alignment correctly resyncs after soft-wrap recalculation on pane resize, via [scroll-keeper](https://github.com/asiloisad/pulsar-scroll-keeper).
 - **Modern codebase**: Converted to JavaScript with updated dependencies.
 
 ## Installation
