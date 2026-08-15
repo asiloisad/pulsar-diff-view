@@ -18,7 +18,7 @@ Fork of [split-diff](https://github.com/mupchrch/split-diff).
 
 ## Installation
 
-To install `diff-view` search for [diff-view](https://web.pulsar-edit.dev/packages/diff-view) in the Install pane of the Pulsar settings or run `ppm install diff-view`. Alternatively, you can run `ppm install asiloisad/pulsar-diff-view` to install a package directly from the GitHub repository.
+To install `diff-view` search for [diff-view](https://web.pulsar-edit.dev/packages/diff-view) in the Install pane of the Pulsar settings or run `ppm install diff-view`. Alternatively, you can run `ppm install asiloisad-pulsar/diff-view` to install a package directly from the GitHub repository.
 
 ## Commands
 
